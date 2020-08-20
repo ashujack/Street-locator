@@ -1,13 +1,14 @@
+##### for mounting drive on colab
+
+# from google.colab import drive
+# drive.mount('/content/drive')
+
+#################################
+
 import urllib.request
 import os
-from tqdm import tqdm
-import click
 import time
 import tensorflow as tf
-from google.colab import drive
-drive.mount('/content/drive')
-import tensorflow as tf
-
 root_path = os.getcwd()
 
 def download_images(link_file_images,output_directory,image_type):
@@ -18,14 +19,12 @@ def download_images(link_file_images,output_directory,image_type):
 
   for idx, image_link in enumerate(image_links):
     image_path = output_directory + image_type  + "/image_%d.tiff" % (idx+1)  
-
-    print(image_path)
-    print(image_link)
+    # print(image_path)
+    # print(image_link)
     urllib.request.urlretrieve(image_link, image_path)
 
 
-if __name__ == '__main__':
-    
+if __name__ == '__main__':    
     dataset_name = "MassachusettsRoads"
     link_file_images = root_path+ "/Data/Images.txt".format(dataset_name)
     link_file_targets = root_path+ "/Data/Targets.txt".format(dataset_name)
